@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Voice Tool - Text to Speech</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <div class="bg-gradient"></div>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <i class="bi bi-soundwave"></i>
+                <h1>Voice Tool</h1>
+            </div>
+            <p class="subtitle">Unlimited Text to Speech &bull; 70+ Languages &bull; 300+ Voices</p>
+        </header>
+
+        <main class="card">
+            <div class="grid">
+                <div class="form-group">
+                    <label><i class="bi bi-translate"></i> Language</label>
+                    <div class="dropdown">
+                        <button type="button" class="dropdown-trigger" id="languageTrigger"
+                                aria-haspopup="listbox" aria-expanded="false">
+                            <span id="languageValue" class="dropdown-value">Loading...</span>
+                            <i class="bi bi-chevron-down dropdown-arrow"></i>
+                        </button>
+                        <ul class="dropdown-list" id="languageList" role="listbox"></ul>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label><i class="bi bi-person-voice"></i> Voice</label>
+                    <div class="dropdown">
+                        <button type="button" class="dropdown-trigger" id="voiceTrigger"
+                                aria-haspopup="listbox" aria-expanded="false">
+                            <span id="voiceValue" class="dropdown-value">Select language first</span>
+                            <i class="bi bi-chevron-down dropdown-arrow"></i>
+                        </button>
+                        <ul class="dropdown-list" id="voiceList" role="listbox"></ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="text"><i class="bi bi-type"></i> Your Text</label>
+                <textarea id="text" class="textarea" placeholder="Type or paste your script here..." rows="6"></textarea>
+                <div class="char-count"><span id="charcount">0 characters</span></div>
+            </div>
+
+            <div class="grid sliders">
+                <div class="form-group">
+                    <label for="rate"><i class="bi bi-speedometer2"></i> Speed: <span id="rateVal">0%</span></label>
+                    <input type="range" id="rate" class="range" min="-100" max="100" step="1" value="0">
+                </div>
+                <div class="form-group">
+                    <label for="pitch"><i class="bi bi-arrow-up-down"></i> Pitch: <span id="pitchVal">0Hz</span></label>
+                    <input type="range" id="pitch" class="range" min="-50" max="50" step="1" value="0">
+                </div>
+            </div>
+
+            <div class="actions">
+                <button id="generateBtn" class="btn btn-primary">
+                    <i class="bi bi-play-circle-fill"></i> Generate Speech
+                </button>
+                <a id="downloadBtn" class="btn btn-secondary hidden" download>
+                    <i class="bi bi-download"></i> Download Audio
+                </a>
+            </div>
+
+            <div id="status" class="status"></div>
+
+            <div id="playerWrap" class="audio-section hidden">
+                <audio id="player" controls class="audio-player"></audio>
+                <div class="duration">Duration: <span id="duration">--</span></div>
+            </div>
+        </main>
+
+        <footer class="footer">
+            <p>Built with FastAPI + Edge TTS &bull; Modern Glassmorphism UI</p>
+        </footer>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+</html>
